@@ -1,0 +1,127 @@
+
+body{
+    margin: 0;
+}
+.navigation{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(0, 0, 0);
+    
+}
+.navtitles{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 43px;
+    margin-right: 24px;
+    font-size: x-large;
+    font-family: sans-serif;
+   
+    
+}
+.navOptions{
+    /* border: 2px solid rgb(30, 5, 89); */
+    padding: 9px;
+    border-radius:40px;
+    
+}
+.navlink{
+  color:rgba(255, 255, 255, 0.726); 
+  text-decoration: none; 
+  position: relative ;
+  transition: all 0.5s ease-out;
+}
+  
+
+.titleImg{
+    margin-left: 30px;
+}
+.navlink:hover{
+    font-size: larger;
+    z-index: 30;
+    color: white;
+    
+    
+}
+
+.navtitles .navlink::before{
+   
+    content: " ";
+    position: absolute;
+    bottom: -10px;
+    width: 0%;
+    height: 3px;
+    left: 0;
+    background-color: white;
+    transition: all 0.5s ease-out;
+    
+}
+
+.navtitles .navlink:hover::before{
+    width: 100%;
+}
+
+.contain{
+    /* background-image: url(https://thumbs.dreamstime.com/z/female-hands-carbon-footprint-flowing-against-blue-to-grey-background-how-big-your-concept-167704492.jpg?w=992);
+    background-color: black; */
+    height: 100%;
+    width: 100%;
+    text-align: center;
+   
+    background-color: #7c7c95;
+
+    
+}
+
+.text-1{
+     
+      font-family: cursive;
+}
+
+
+
+.contain a:hover{
+    color: blue;
+    text-decoration: underline;
+}
+
+.image{
+   height: 100%;
+   width: 100%;
+ 
+   position: absolute;
+   background-image: url(https://wallpaperaccess.com/full/9061992.jpg);
+  
+}
+
+.details{
+  text-align: center;  
+  position: relative;  
+  top: 40px;
+}
+
+.text-2{
+    font-size:xx-large;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 1500;
+}
+
+.link{
+    background-color: #0450c2;
+    padding: 4px 16px 4px 16px;
+    border: 1px solid #00a2ff;
+    border-radius: 8px;
+    font-size: 140%;
+    color: white;
+}
+
+.link:hover {
+    background-color: aliceblue;
+    border-color: #0450c2;
+    cursor: pointer;
+    color: black;
+}
+
+#auth_section {
+    display: block;
+}
