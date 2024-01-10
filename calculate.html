@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Carbon Footprint</title>
+    <style>
+        .container {
+            margin-left: 100px;
+            margin-top: 100px;
+        }
+        .title {
+            font-size: 200%;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: 600;
+        }
+
+        .form {
+            margin-top: 150px;
+        }
+
+        .input {
+            width: 300px;
+            height: 30px;
+            border-width: 0 0 3px 0;
+            border-color: blue;
+            background-color: rgb(230, 230, 240);
+        }
+
+        .submit {
+            width: 100px;
+            height: 35px;
+            background-color: blue;
+            color: white;
+            border: 0;
+        }
+
+        .submit:hover {
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .result {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 40%;
+            height: 30%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            text-align: center;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 1px 3px 3px 1px #888888;
+            font-size: 200%;
+            font-weight: 600;
+            background-color: white;
+            display: none;
+        }
+
+        @media (max-width: 430px) {
+            .title {
+                font-size: 150%;
+            }
+            .container {
+                margin-top: 0;
+                margin-left: 0;
+            }
+            .input {
+                background-color: rgb(227, 227, 231);
+                width: 80%;
+            }
+
+            .result {
+                height: 15%;
+                font-size: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            Calculate your carbon footprint
+        </div>
+        <div class="form">
+            <br/>Number of people in the house<br />
+            <input type="number" placeholder="No of people in the house" class="input" id="num_people" required>
+            <br /><br/>Electricity Consumption (kWh)<br />
+            <input type="number" placeholder="Electricity Consumption (kWh)" class="input" id="elec_consumption" required>
+            <br /><br/>Natural Gas Consumption (kWh)<br />
+            <input type="number" placeholder="Natural Gas Consumption (kWh)" class="input" id="gas_consumption" required>
+            <br /><br/>Heating oil consumption (liters)<br />
+            <input type="number" placeholder="Heating oil consumption (liters)" class="input" id="oil_consumption" required>
+            <br /><br/>Coal Consumption (Kgs)<br />
+            <input type="number" placeholder="Coal Consumption (Kgs)" class="input" id="coal_consumption" required>
+            <br /><br/>LPG Consumption (liters)<br />
+            <input type="number" placeholder="LPG Consumption (liters)" class="input" id="lpg_consumption" required>
+            <br /><br/>Propane Consumption (liters)<br />
+            <input type="number" placeholder="Propane Consumption (liters)" class="input" id="propane_consumption" required>
+            <br /><br/>Travel frequency<br />
+            <select class="input" required id="travel">
+                <option value="light">Light - Maybe once a year or more</option>
+                <option value="normal">Normal - Almost once a month</option>
+                <option value="heavy">Heavy - Once a week or less</option>
+            </select>
+            <br><br>
+            <button name="submit" class="submit" id="calc">Calculate</button>
+        </div>
+
+        <div class="result" id="result">
+            
+        </div>
+        
+    </div>
+
+    <script>
+        const num_people = document.getElementById('num_people');
+        const elec_consumption = document.getElementById('elec_consumption');
+        const gas_consumption = document.getElementById('gas_consumption');
+        const oil_consumption = document.getElementById('oil_consumption');
+        const coal_consumption = document.getElementById('coal_consumption');
+        const lpg_consumption = document.getElementById('lpg_consumption');
+        const propane_consumption = document.getElementById('propane_consumption');
+        const travel = document.getElementById('travel');
+        const calc = document.getElementById('calc');
+        const result = document.getElementById('result');
+
+        calc.onclick = function() {
+            let npeople = Number(num_people.value);
+            let elec = Number(elec_consumption.value);
+            let gas = Number(gas_consumption.value);
+            let oil = Number(oil_consumption.value);
+            let coal = Number(coal_consumption.value);
+            let lpg = Number(lpg_consumption.value);
+            let propane = Number(propane_consumption.value);
+            let trvl = travel.value;
+
+            let carbon_footprint = npeople * (0.5 * elec + 2.0 * gas + 2.5 * oil + 3.0 * coal + 1.5 * lpg + 1.8 * propane);
+
+            if(trvl == 'light') {
+                carbon_footprint += npeople * 3.0;
+            } else if(trvl == 'normal') {
+                carbon_footprint += npeople * 5.0;
+            } else {
+                carbon_footprint += npeople * 8.0
+            }
+
+            result.style.display = 'block';
+            result.innerText = 'Carbon Footprint: ' + carbon_footprint;
+        }
+    </script>
+</body>
+</html>
