@@ -84,6 +84,7 @@
     document.getElementById('logout').onclick = function(e) {
         e.preventDefault();
         signOut(auth);
+        window.href.link = './index.html'
     }
 
     const database = getDatabase(app);
@@ -112,7 +113,7 @@
             })
             
         } else {
-            window.location.href = './index.html';
+            window.location.href = './login.html';
         }
     });
 
