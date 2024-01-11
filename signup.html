@@ -65,7 +65,7 @@
 			}
 		}
 	</style>
-	<script type="module" src="./scripts/signup.js"></script>
+	
 </head>
 <body>
 	<form>
@@ -81,7 +81,7 @@
 			<input type="password" placeholder="Enter Password" id="psw" required>
 			<label for="psw-repeat"><b>Repeat Password</b></label>
 			<input type="password" placeholder="Repeat Password" id="psw-repeat" required>
-			<button type="submit" onclick="signup()">Sign Up</button>
+			<button id="signup_btn">Sign Up</button>
 			
 		</div>
 		<div class="container" style="background-color:#f1f1f1">
@@ -91,4 +91,69 @@
 	</form>
 	
 </body>
+<script type="module">
+	// Import the functions you need from the SDKs you need
+	import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+	import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+	import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+	import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+	// TODO: Add SDKs for Firebase products that you want to use
+	// https://firebase.google.com/docs/web/setup#available-libraries
+  
+	// Your web app's Firebase configuration
+	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	const firebaseConfig = {
+	  apiKey: "AIzaSyCZVYiRZUT_dTxe0LiYO4fiZ7Unk-Bld5Y",
+	  authDomain: "planet-check-f91cb.firebaseapp.com",
+	  databaseURL: "https://planet-check-f91cb-default-rtdb.asia-southeast1.firebasedatabase.app",
+	  projectId: "planet-check-f91cb",
+	  storageBucket: "planet-check-f91cb.appspot.com",
+	  messagingSenderId: "102492149620",
+	  appId: "1:102492149620:web:7c39d044b6ceef96d87e21",
+	  measurementId: "G-Y980R8YWT5"
+	};
+  
+	// Initialize Firebase
+	const app = initializeApp(firebaseConfig);
+	const analytics = getAnalytics(app);
+
+	const auth = getAuth();
+	console.log(auth);
+
+	document.getElementById('signup_btn').onclick = function(e) {
+		e.preventDefault();
+		console.log('signup');
+		let uname = document.getElementById('uname').value;
+		let email = document.getElementById('email').value;
+		let pswd = document.getElementById('psw').value;
+		console.log(auth);
+		createUserWithEmailAndPassword(auth, email, pswd)
+			.then((cred) => {
+				let userid = cred.user.uid;
+				console.log('Registered as ' + userid);
+				console.log(cred);
+
+				//add userdata to db
+				const db = getDatabase();
+				set(ref(db, 'users/'+userid), {
+					username: uname,
+					email: email,
+					carbon_footprint: -1
+
+				}).then(() => {
+					window.location.href = './dashboard.html';
+				})
+
+
+
+
+				
+			})
+			.catch((err) => {
+				console.log(err.code + ": " + err.message);
+			});
+	};
+
+	
+  </script>
 </html>

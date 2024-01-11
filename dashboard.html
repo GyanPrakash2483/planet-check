@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        .title {
+            font-size: 32px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .field {
+            font-size: 120%;
+            font-family: 'Courier New', Courier, monospace;
+            width: 65%;
+            padding: 12px;
+            background-color: rgb(210, 210, 224);
+            border: 1px solid blue;
+        }
+
+        button {
+            padding: 20px 30px 20px 30px;
+            border: 0px;
+            background-color: blue;
+            color: white;
+            font-size: 16px;
+        }
+
+        button:hover {
+            cursor: pointer;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Dashboard</div><br><br><br>
+
+
+        Username:<br><div id="uname" class="field"></div><br>
+        Email:<br><div id="email" class="field"></div><br>
+        UserId:<br><div id="userid" class="field"></div><br>
+        Carbon Footprint:<br><div id="carbon_footprint" class="field"></div><br><br>
+        <button id="logout">Logout</button>
+    </div>
+</body>
+<script type="module">
+	// Import the functions you need from the SDKs you need
+	import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+	import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+	import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+	import { getDatabase, ref, child, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+	// https://firebase.google.com/docs/web/setup#available-libraries
+  
+	// Your web app's Firebase configuration
+	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	const firebaseConfig = {
+	  apiKey: "AIzaSyCZVYiRZUT_dTxe0LiYO4fiZ7Unk-Bld5Y",
+	  authDomain: "planet-check-f91cb.firebaseapp.com",
+	  databaseURL: "https://planet-check-f91cb-default-rtdb.asia-southeast1.firebasedatabase.app",
+	  projectId: "planet-check-f91cb",
+	  storageBucket: "planet-check-f91cb.appspot.com",
+	  messagingSenderId: "102492149620",
+	  appId: "1:102492149620:web:7c39d044b6ceef96d87e21",
+	  measurementId: "G-Y980R8YWT5"
+	};
+  
+	// Initialize Firebase
+	const app = initializeApp(firebaseConfig);
+	const analytics = getAnalytics(app);
+
+	const auth = getAuth();
+	console.log(auth);
+
+    document.getElementById('logout').onclick = function(e) {
+        e.preventDefault();
+        signOut(auth);
+    }
+
+    const database = getDatabase(app);
+
+	onAuthStateChanged(auth, (user) => {
+        if(user) {
+            let userid = user.uid;
+            //get userdata from database
+            const dbRef = ref(getDatabase());
+            get(child(dbRef, 'users/'+userid)).then((snapshot) => {
+                if(snapshot.exists()) {
+                    console.log(snapshot.val());
+                    let email = snapshot.val().email;
+                    let uname = snapshot.val().username;
+                    let carbon_footprint = snapshot.val().carbon_footprint;
+
+                    document.getElementById('uname').innerText = uname;
+                    document.getElementById('email').innerText = email;
+                    document.getElementById('userid').innerText = userid;
+                    document.getElementById('carbon_footprint').innerText = carbon_footprint;
+
+                    if(carbon_footprint == '-1') {
+                        document.getElementById('carbon_footprint').innerText = 'Not Checked';
+                    }
+                }
+            })
+            
+        } else {
+            window.location.href = './login.html';
+        }
+    });
+
+	
+  </script>
+</html>

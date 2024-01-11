@@ -1,68 +1,24 @@
-#include <iostream>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-using namespace std;
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCZVYiRZUT_dTxe0LiYO4fiZ7Unk-Bld5Y",
+    authDomain: "planet-check-f91cb.firebaseapp.com",
+    databaseURL: "https://planet-check-f91cb-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "planet-check-f91cb",
+    storageBucket: "planet-check-f91cb.appspot.com",
+    messagingSenderId: "102492149620",
+    appId: "1:102492149620:web:7c39d044b6ceef96d87e21",
+    measurementId: "G-Y980R8YWT5"
+  };
 
-double calculateCarbonFootprint() {
-    int numPeople;
-    double electricityUsed, naturalGasUsed, heatingOilUsed, coalUsed, lpgUsed, propaneUsed;
-    string travelFrequency;
-
-    cout << "Enter the number of people in the house: ";
-    cin >> numPeople;
-
-    cout << "Enter electricity consumption in kWh: ";
-    cin >> electricityUsed;
-
-    cout << "Enter natural gas consumption in kWh: ";
-    cin >> naturalGasUsed;
-
-    cout << "Enter heating oil consumption in liters: ";
-    cin >> heatingOilUsed;
-
-    cout << "Enter coal consumption in metric tons: ";
-    cin >> coalUsed;
-
-    cout << "Enter LPG consumption in liters: ";
-    cin >> lpgUsed;
-
-    cout << "Enter propane consumption in liters: ";
-    cin >> propaneUsed;
-
-    cout << "Enter your travel frequency (normal/heavy/light): ";
-    cin >> travelFrequency;
-
-    const double electricityFactor = 0.5;
-    const double gasFactor = 2.0;
-    const double oilFactor = 2.5;
-    const double coalFactor = 3.0;
-    const double lpgFactor = 1.5;
-    const double propaneFactor = 1.8;
-    const double normalTravelFactor = 5.0;
-    const double heavyTravelFactor = 8.0;
-    const double lightTravelFactor = 3.0;
-
-    double carbonFootprint = numPeople * (electricityUsed * electricityFactor +
-                                          naturalGasUsed * gasFactor +
-                                          heatingOilUsed * oilFactor +
-                                          coalUsed * coalFactor +
-                                          lpgUsed * lpgFactor +
-                                          propaneUsed * propaneFactor);
-
-    if (travelFrequency == "normal") {
-        carbonFootprint += numPeople * normalTravelFactor;
-    } else if (travelFrequency == "heavy") {
-        carbonFootprint += numPeople * heavyTravelFactor;
-    } else if (travelFrequency == "light") {
-        carbonFootprint += numPeople * lightTravelFactor;
-    }
-
-    cout << "The estimated carbon footprint is " << carbonFootprint << " kg CO2 per year." << endl;
-
-    return carbonFootprint;
-}
-
-int main() {
-    calculateCarbonFootprint();
-
-    return 0;
-}
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
