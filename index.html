@@ -4,69 +4,130 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
-    <script type="module">
-		// Import the functions you need from the SDKs you need
-		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-		import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
-		// TODO: Add SDKs for Firebase products that you want to use
-		// https://firebase.google.com/docs/web/setup#available-libraries
-	  
-		// Your web app's Firebase configuration
-		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-		const firebaseConfig = {
-		  apiKey: "AIzaSyA9ZIGuBygjx7CjCfpKYnq1UEQ_0NA3554",
-		  authDomain: "planet-check.firebaseapp.com",
-		  databaseURL: "https://planet-check-default-rtdb.asia-southeast1.firebasedatabase.app",
-		  projectId: "planet-check",
-		  storageBucket: "planet-check.appspot.com",
-		  messagingSenderId: "241900145633",
-		  appId: "1:241900145633:web:888bd806092a5a780c20a0",
-		  measurementId: "G-9TXSXTBF2G"
-		};
-	  
-		// Initialize Firebase
-		const app = initializeApp(firebaseConfig);
-		const analytics = getAnalytics(app);
-	  </script>
+    <style>
+        *{
+            margin: 0;padding: 0;
+            font-family: sans-serif ;
+        }
+        .banner{
+            height: 100vh;
+            width: 100%;
+            background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('./assets/home_bg.webp');
+            background-size: cover;
+            background-position: center;
+        }
+        .navbar{
+            width: 85%;
+            margin: auto;
+            padding: 35px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between ;
+        }
+        .logo{
+            width: 300px;
+            cursor: pointer;
+        }
+        .navbar ul li{
+            list-style: none;
+            display: inline-block;
+            margin: 0 20px;
+            position: relative;
+        }
+        .navbar ul li a{
+            text-decoration: none;
+            color: #fff;
+            text-transform: uppercase;
+           
+        }
+        .navbar ul li::after{
+            content: '';
+            height: 3px;
+            width: 0;
+            background: #009688;
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            transition: 0.5s;
+
+        }
+        .navbar ul li:hover::after{
+            width: 100%;
+        }
+        .content{
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+            color: #fff;
+        }
+        .content h1{
+            font-size: 70px;
+            margin-top: 80px;
+        }
+        .content p{
+            margin: 20px auto;
+            font-weight: 100;
+            line-height: 25px;
+        }
+        button{
+            width: 200px;
+            padding: 15px 0;
+            text-align: center;
+            margin: 20px 10px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid #009688;
+            /* color: #fff; */
+            background: transparent;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+        button a{
+            color: #fff;
+            text-decoration: none;
+        }
+        span{
+            width: 0%;
+            height: 100%;
+            background: #009688;
+            border-radius: 25px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+            transition: 0.5s;
+        }
+        button:hover span{
+            width: 100%;
+        }
+        button:hover{
+            border: none;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navigation">
+    <div class="banner">
+        <div class="navbar">
+            <img src="./assets/imagelogo.png" class="logo" alt="">
+            <ul>
+                <li><a href="./about_us.html">About us</a></li>
+                <li><a href="./calculate.html">Calculate</a></li>
+                <li><a href="#">Donation</a></li>
+                <li><a href="./contact.html">Contact us</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>TOGETHER WE CAN MAKE A DIFFERENCE</h1>
             
-            <div class="titleImg">
-                <img src="Screenshot 2024-01-01 142356.png"  width="100px">
-            </div>
-            <div class="navtitles">
-            <div class="navOptions"><a class="navlink" href="about_us.html">About</a></div>
-            <div class="navOptions"><a class="navlink" href="./calculate.html">Carbon Footprints</a></div>
-            <div class="navOptions"><a class="navlink" href="#">Donations</a></div>
-            <div class="navOptions"><a class="navlink" href="./contact.html">Contact</a></div>
-        </div>
-        </nav>
-    </header>
-    <section>
-        <div class="contain">
-        <!-- <marquee behavior="sliding" direction="left"  >     -->
-       <a href="more.html"> <marquee behavior="sliding" direction="left"><h1  class="text-1">
-         Click to know   More About Carbon Footprint</h1></marquee></a>
-        
-    <!-- </marquee> -->
-        </div>
-    </section>
-
-    <section class="image">
-        <div class="details">
             <div>
-                <h1 class="text-2">Let's Start your healthy journey with us</h1>
+                <button type="button"><span></span><a href="./dashboard.html">Dashboard</a></button>
+                <button type="button"><span></span><a href="./signup.html">Register</a></button>
             </div>
-
-            <div id="auth_section">
-                <a href="./dashboard.html"><button class="link" id="auth_login">Dashboard</button></a>
-                <a href="./signup.html"><button class="link" id="auth_register">Register</button></a>
-            </div>
-
         </div>
-    </section>
+    </div>
 </body>
 </html>

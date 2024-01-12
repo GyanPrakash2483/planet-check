@@ -13,7 +13,9 @@
             padding: 0;
         }
         body{
-            background-color: #55ffe5;
+            background-image: url('./assets/contact_bg.jpg');
+            background-size: cover;
+            background-position: center;
             font-size: 14px;
             font-family: 'Roboto', sans-serif;
         }
@@ -39,7 +41,7 @@
             margin-bottom: 10px;
         }
         .container p{
-margin-bottom: 40px;
+            margin-bottom: 40px;
         }
         .input-row{
             display: flex;
@@ -103,8 +105,8 @@ margin-bottom: 40px;
 </head>
 <body>
     <div class="container">
-        <h1>Connect with us</h1>
-        <p>We would love to respond to your queries and help you succeed. <br> Feel free to get in touch with us.</p>
+        <h1 style="color: white;text-shadow: #88FF00 1px 0 10px;">Connect with us</h1>
+        <p style="color: white;text-shadow: #88FF00 1px 0 10px;">We would love to respond to your queries and help you succeed. <br> Feel free to get in touch with us.</p>
         <div class="contact-box">
             <div class="contact-left">
                 <h3>Sent your request</h3>
@@ -112,28 +114,28 @@ margin-bottom: 40px;
                     <div class="input-row">
                         <div class="input-group">
                             <label >Name</label>
-                            <input type="text" placeholder="Enter Name">
+                            <input type="text" placeholder="Enter Name" id="name">
                         </div>
                         <div class="input-group">
                             <label >Phone</label>
-                            <input type="text" placeholder="+91 0000000000">
+                            <input type="text" placeholder="+91 0000000000" id="number">
                         </div>
                     
                     </div>
                     <div class="input-row">
                         <div class="input-group">
-                            <label >Name</label>
-                            <input type="text" placeholder="Enter Name">
+                            <label >Email</label>
+                            <input type="text" placeholder="abcd123@gmail.com" id="email">
                         </div>
                         <div class="input-group">
-                            <label >Phone</label>
-                            <input type="text" placeholder="+91 0000000000">
+                            <label >Subject</label>
+                            <input type="text" id="subject" placeholder="">
                         </div>
                     
                     </div>
                     <label>Message</label>
-                    <textarea rows="5" placeholder="Your Message"></textarea>
-                    <button class="btn-1" type="submit">SEND</button>
+                    <textarea rows="5" placeholder="Your Message" id="body"></textarea>
+                    <button class="btn-1" type="submit" id="send_btn">SEND</button>
                 </form>
             </div>
             <div class="contact-right">
@@ -149,5 +151,41 @@ margin-bottom: 40px;
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById('send_btn').onclick = function() {
+            let email = document.getElementById('email').value;
+            let subject = document.getElementById('subject').value;
+            let body = document.getElementById('body').value;
+            let name = document.getElementById('name').value;
+            let number = document.getElementById('number').value;
+
+            let uri = 'mailto:help.planetcheck@gmail.com?subject=';
+
+            //add subject
+            uri+=subject;
+        
+            //add body
+            uri += '&body=';
+            uri += body;
+
+            //add name
+
+            uri+='\n\n';
+            uri+=name;
+
+            //add phone number
+
+            uri += '\n';
+            uri += number;
+
+            //add email
+
+            uri += '\n';
+            uri += email;
+
+            window.location.href = encodeURI(uri);
+
+        }
+    </script>
 </body>
 </html>
