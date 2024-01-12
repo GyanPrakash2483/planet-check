@@ -13,7 +13,7 @@
             padding: 0;
         }
         body{
-            background-image: url('./assets/contact_bg.jpg');
+            background-image: url('./assets/contact_bg.webp');
             background-size: cover;
             background-position: center;
             font-size: 14px;
@@ -22,19 +22,27 @@
         .container{
             width: 80%;
             margin: 50px auto;
+            color: white;
         }
         .contact-box{
-            background-color: #fff;
+            background-color: rgb(0, 0, 0, 0);
+            backdrop-filter: blur(2px);
             display: flex;
+            border: 1px solid white;
+            border-radius: 5px;
         }
         .contact-left{
             flex-basis: 60%;
             padding: 40px 60px;
+            background-color: rgb(0, 0, 0, 0);
+            backdrop-filter: blur(0px);
+            border-right:1px dotted white
         }
         .contact-right{
             flex-basis: 40%;
             padding: 40px ;
-            background-color: #1c00b5;
+            background-color: rgb(0, 0, 0, 0);
+            backdrop-filter: blur(2px);
             color: #fff;
         }
         h1{
@@ -54,9 +62,15 @@
         input{
             width: 100%;
             border: none;
-            border-bottom: 1px solid #ccc4;
+            border-bottom: 1px solid white;
             outline: none;
             padding-bottom: 5px;
+            padding: 3px;
+            background-color: rgb(0, 0, 0, 0);
+            color: white;
+        }
+        input::placeholder {
+            color: white;
         }
         textarea{
             width: 100%;
@@ -64,43 +78,51 @@
             outline: none;
             padding: 10px;
             box-sizing: border-box;
+            background-color: rgb(0, 0, 0, 0);
+            color: white;
+        }
+        textarea::placeholder {
+            color: white;
         }
         label{
             margin-bottom: 6px;
             display: block;
             
         }
-    .btn-1{
-        color: white;
-        background-color: #1c00b5;
-        border: none;
-        outline: none;
-        margin-top: 30px;
-        border-radius: 30px;
-        height: 35px;
-        width: 100px;
-        cursor: pointer;
-        box-shadow: 0 5px 15px 0 rgba(28,0,181,0.3);
+        .btn-1{
+            color: white;
+            background-color: green;
+            border: none;
+            outline: none;
+            margin-top: 30px;
+            border-radius: 30px;
+            height: 35px;
+            width: 100px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px 0 rgba(28,0,181,0.3);
 
-    }
-    .btn-2{
-        background-color: white;
-    color: white;
-    border: none;
-    outline: none;
-    padding: 5px;
-    margin-top: 10px;
-    margin-left: 75px;
-    margin-top: 30px;
-    font-size: large;
-    border-radius: 6px;
-    }
-    a{
-        text-decoration: none;
-    }
-    table{
-        margin-top: 40px;
-    }
+        }
+        .btn-1:hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+        .btn-2{
+            background-color: green;
+            border: none;
+            outline: none;
+            padding: 6px 12px 6px 12px;
+            margin-top: 10px;
+            margin-top: 30px;
+            font-size: large;
+            border-radius: 60px;
+        }
+        a{
+            text-decoration: none;
+            color: white
+        }
+        table{
+            margin-top: 40px;
+        }
     </style>
 </head>
 <body>
@@ -129,7 +151,7 @@
                         </div>
                         <div class="input-group">
                             <label >Subject</label>
-                            <input type="text" id="subject" placeholder="">
+                            <input type="text" id="subject" placeholder="Enter Subject">
                         </div>
                     
                     </div>
@@ -146,7 +168,7 @@
                         <td>help.planetcheck@gmail.com</td>
                     </tr>
                 </table>
-                 <button class="btn-2"><a href="mailto:help.planetcheck@gmail.com">Email me</a>
+                 <button class="btn-2"><a href="mailto:help.planetcheck@gmail.com">Email Us</a>
                  </button>
             </div>
         </div>

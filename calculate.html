@@ -6,7 +6,7 @@
     <title>Calculate Carbon Footprint</title>
     <style>
         body {
-            background: url("./assets/nature-forest-trees-fog.jpeg");
+            background: url("./assets/calculate_bg.jpeg");
             background-size: 100%;
         }
         .container {
@@ -18,21 +18,23 @@
             font-size: 200%;
             font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             font-weight: 600;
-            color: black;
+            color: white;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
+            z-index: 1;
         }
 
         .form {
-            background-color: rgb(0, 0, 0, 0.5);
+            background-color: rgb(0, 0, 0, 0);
+            border: 1px solid white;
             border-radius: 5px;
-            padding: 80px;
+            padding: 30px 80px 80px 80px;
             position: absolute;
             left: 50%;
-            top: 50%;
+            top: 55%;
             transform: translate(-50%, -50%);
-            backdrop-filter: blur(1px);
+            backdrop-filter: blur(4px);
         }
 
         .input {
@@ -44,14 +46,14 @@
 
         .submit {
             position: absolute;
-            width: 100px;
-            height: 35px;
+            padding: 10px 20px 10px 20px;
             background-color: rgb(204, 142, 27);
             color: white;
             border: 0;
             border-radius: 2px;
             left: 50%;
-            transform: translateX(-50%)
+            transform: translateX(-50%);
+            font-size: 120%;
         }
 
         .submit:hover {
@@ -115,12 +117,12 @@
             Calculate your carbon footprint
         </div>
         <div class="form">
-            <br/>Number of people in the house<br />
+            Number of people in the house<br />
             <input type="number" placeholder="No of people in the house" class="input" id="num_people" required>
             <br /><br/>Electricity Consumption (kWh)<br />
             <input type="number" placeholder="Electricity Consumption (kWh)" class="input" id="elec_consumption" required>
-            <br /><br/>Natural Gas Consumption (kWh)<br />
-            <input type="number" placeholder="Natural Gas Consumption (kWh)" class="input" id="gas_consumption" required>
+            <br /><br/>Natural Gas Consumption (liters)<br />
+            <input type="number" placeholder="Natural Gas Consumption (liters)" class="input" id="gas_consumption" required>
             <br /><br/>Heating oil consumption (liters)<br />
             <input type="number" placeholder="Heating oil consumption (liters)" class="input" id="oil_consumption" required>
             <br /><br/>Coal Consumption (Kgs)<br />
@@ -132,8 +134,8 @@
 
             <br /><br/>Travel frequency<br />
             <input type="radio" id="light" name="travel" value="light">Light
-            <input type="radio" id="normal" name="travel" value="normal">normal
-            <input type="radio" id="heavy" name="travel" value="heavy">heavy
+            <input type="radio" id="normal" name="travel" value="normal">Normal
+            <input type="radio" id="heavy" name="travel" value="heavy">Heavy
             <br><br>
             <button name="submit" class="submit" id="calc">Calculate</button>
         </div>

@@ -85,8 +85,6 @@
             cursor: pointer;
             overflow: hidden;
             position: relative;
-        }
-        button a{
             color: #fff;
             text-decoration: none;
         }
@@ -114,7 +112,7 @@
         <div class="navbar">
             <img src="./assets/imagelogo.png" class="logo" alt="">
             <ul>
-                <li><a href="./about_us.html">About us</a></li>
+                <li><a href="./more.html">About us</a></li>
                 <li><a href="./calculate.html">Calculate</a></li>
                 <li><a href="#">Donation</a></li>
                 <li><a href="./contact.html">Contact us</a></li>
@@ -124,10 +122,20 @@
             <h1>TOGETHER WE CAN MAKE A DIFFERENCE</h1>
             
             <div>
-                <button type="button"><span></span><a href="./dashboard.html">Dashboard</a></button>
-                <button type="button"><span></span><a href="./signup.html">Register</a></button>
+                <button type="button" id="dashboard"><span></span>Dashboard</button>
+                <button type="button" id="register"><span></span>Register</button>
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('dashboard').onclick = function() {
+            window.location.href = './dashboard.html';
+        }
+
+        document.getElementById('register').onclick = function() {
+            window.location.href = './signup.html';
+        }
+    </script>
 </body>
 </html>
